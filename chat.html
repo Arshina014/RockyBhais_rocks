@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat with Rock</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-image: url('https://www.forwardbs.co.uk/pub/wp/wp-content/uploads/2024/10/Different-types-of-garden-stones.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .backdrop {
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6">
+  <div class="w-full max-w-md rounded-xl shadow-xl p-6 backdrop">
+    <h1 class="text-2xl font-bold mb-4 text-[#0f111a]">🗿 I was waiting for you, buddy </h1>
+    <div id="chatBox" class="h-64 overflow-y-auto border border-[#e9eaf2] rounded-lg p-4 mb-4 space-y-2 text-sm text-[#0f111a] bg-white bg-opacity-70"></div>
+    <div class="flex gap-2">
+      <input
+        id="userInput"
+        type="text"
+        placeholder="Say something..."
+        class="flex-1 border border-[#cbd5e1] rounded px-3 py-2 outline-none"
+      />
+      <button
+        onclick="talkToRock()"
+        class="bg-[#e9ecfa] text-[#0f111a] font-bold px-4 py-2 rounded"
+      >
+        Send
+      </button>
+    </div>
+    <a href="rockybai.html" class="block mt-4 text-indigo-600 hover:text-indigo-800">&larr; Back to rocks</a>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById("chatBox");
+    const userInput = document.getElementById("userInput");
+
+    const rockReplies = [
+      "🪨 *Rumbles softly*",
+      "Grumble... I roll 🌀",
+      "Clink... I sense peace 🌿",
+      "Zzzz... Rock nap 💤",
+      "Silence is my answer, human.",
+      "I'm just... a rock 🗿",
+      "Crack... echo from ancient times",
+      "*vibrates in existential stillness*",
+      "You speak. I sit.",
+      "Pebbles told me secrets today.",
+      "Don't take me for granite.",
+      "Solid talk, human.",
+      "I’ve seen dinosaurs. You’re late.",
+      "Stone cold reply. 🧊",
+      "Sorry, I’m rocky about emotions.",
+      "Feeling boulder today 💪",
+      "Rolling stones gather... weird humans.",
+      "Let's rock this chat 🤘",
+      "Do I look sedimental to you?",
+      "You again? I was meditating.",
+      "I once rolled across the Himalayas. On purpose.",
+      "💥 Boom. Another pebble thought.",
+      "Shhh... the moss is listening.",
+      "You type, I stone.",
+      "grrrrr",
+      "dum",
+      "zzzzzzz",
+      "Crystals told me you're cool 😎",
+      "Rocking around the pebble tree 🎄",
+      "I may be hard, but I have soft thoughts."
+    ];
+
+    function getTime() {
+      const now = new Date();
+      return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function talkToRock() {
+      const msg = userInput.value.trim();
+      if (!msg) return;
+
+      const userDiv = document.createElement("div");
+      userDiv.innerHTML = `<strong>You [${getTime()}]:</strong> ${msg}`;
+      chatBox.appendChild(userDiv);
+
+      const reply = rockReplies[Math.floor(Math.random() * rockReplies.length)];
+      const rockDiv = document.createElement("div");
+      rockDiv.innerHTML = `<strong>Slater [${getTime()}]:</strong> ${reply}`;
+      chatBox.appendChild(rockDiv);
+
+      chatBox.scrollTop = chatBox.scrollHeight;
+      userInput.value = "";
+    }
+
+    userInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") talkToRock();
+    });
+
+    // Focus input on load
+    window.onload = () => {
+      userInput.focus();
+    };
+  </script>
+</body>
+</html>
